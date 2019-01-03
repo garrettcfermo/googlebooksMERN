@@ -50,7 +50,7 @@ class Home extends Component {
     return (
       <>
         {
-          !this.props.movie ? (
+          !this.props.book ? (
             <Stepper activeStep={-1}>
               <Step>
                 <StepLabel>Search For A Book By Its Title</StepLabel>
@@ -66,86 +66,54 @@ class Home extends Component {
             (
               <Grid container spacing={8} style={{ marginTop: '2vh' }}>
                 <Grid item xs={6} style={{ textAlign: 'center' }}>
-                  <img src={this.props.movie.Poster} alt={this.props.movie.Title} />
+                  <img style={{height:'400px'}} src={this.props.book.image} alt={this.props.book.title} />
                 </Grid>
                 <Grid item xs={5} className={classes.root}>
                   <ExpansionPanel expanded={false}>
                     <ExpansionPanelSummary>
                       <Typography className={classes.heading}>Title</Typography>
-                      <Typography className={classes.secondaryHeading}>{this.props.movie.Title}</Typography>
+                      <Typography className={classes.secondaryHeading}>{this.props.book.title}</Typography>
                     </ExpansionPanelSummary>
                   </ExpansionPanel>
                   <ExpansionPanel expanded={false}>
                     <ExpansionPanelSummary>
                       <Typography className={classes.heading}>Author</Typography>
-                      <Typography className={classes.secondaryHeading}>{this.props.movie.Director}</Typography>
+                      <Typography className={classes.secondaryHeading}>{this.props.book.authors}</Typography>
                     </ExpansionPanelSummary>
                   </ExpansionPanel>
                   <ExpansionPanel expanded={false}>
                     <ExpansionPanelSummary>
                       <Typography className={classes.heading}>Published Date</Typography>
-                      <Typography className={classes.secondaryHeading}>{this.props.movie.Released}</Typography>
-                    </ExpansionPanelSummary>
-                  </ExpansionPanel>
-                  <ExpansionPanel expanded={false}>
-                    <ExpansionPanelSummary>
-                      <Typography className={classes.heading}>Rated</Typography>
-                      <Typography className={classes.secondaryHeading}>{this.props.movie.Rated}</Typography>
-                    </ExpansionPanelSummary>
-                  </ExpansionPanel>
-                  <ExpansionPanel expanded={false}>
-                    <ExpansionPanelSummary>
-                      <Typography className={classes.heading}>Runtime</Typography>
-                      <Typography className={classes.secondaryHeading}>{this.props.movie.Runtime}</Typography>
+                      <Typography className={classes.secondaryHeading}>{this.props.book.publishedDate}</Typography>
                     </ExpansionPanelSummary>
                   </ExpansionPanel>
                   <ExpansionPanel expanded={expanded === 'panel4'} onChange={this.handleChange('panel4')}>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                      <Typography className={classes.heading}>Plot</Typography>
+                      <Typography className={classes.heading}>Description</Typography>
                       <Typography className={classes.secondaryHeading}>
-                        Click To View The Plot Of The Movie
-            </Typography>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails>
-                      <Typography>
-                        {this.props.movie.Plot}
+                        Click To View The Description Of The Book
                       </Typography>
-                    </ExpansionPanelDetails>
-                  </ExpansionPanel>
-                  <ExpansionPanel expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
-                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                      <Typography className={classes.heading}>Actors</Typography>
-                      <Typography className={classes.secondaryHeading}>
-                        Click To View A List of the Actors
-            </Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
                       <Typography>
-                        {this.props.movie.Actors}
-                      </Typography>
-                    </ExpansionPanelDetails>
-                  </ExpansionPanel>
-                  <ExpansionPanel expanded={expanded === 'panel2'} onChange={this.handleChange('panel2')}>
-                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                      <Typography className={classes.heading}>Writers</Typography>
-                      <Typography className={classes.secondaryHeading}>
-                        Click To View A List of the Writers
-            </Typography>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails>
-                      <Typography>
-                        {this.props.movie.Writer}
+                        {this.props.book.description}
                       </Typography>
                     </ExpansionPanelDetails>
                   </ExpansionPanel>
                   <ExpansionPanel expanded={false}>
                     <ExpansionPanelSummary>
+                      <Typography className={classes.heading}>Link</Typography>
+                      <Typography className={classes.secondaryHeading}> <a target="_blank" rel="noopener noreferrer" href={this.props.book.link}>Click Here!</a></Typography>
+                    </ExpansionPanelSummary>
+                  </ExpansionPanel>
+                  <ExpansionPanel expanded={false}>
+                    <ExpansionPanelSummary>
                       <Typography className={classes.secondaryHeading}>
                         <IconButton>
-                          <FavoriteRounded onClick={this.props.favMovie} />
+                          <FavoriteRounded onClick={this.props.favBook} />
                         </IconButton>
                         <IconButton>
-                          <DeleteRounded onClick={this.props.removeMovie} />
+                          <DeleteRounded onClick={this.props.removeBook} />
                         </IconButton>
                       </Typography>
                     </ExpansionPanelSummary>

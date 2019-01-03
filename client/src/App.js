@@ -10,7 +10,7 @@ class App extends Component {
 
   state = {
     text: '',
-    book: [],
+    book: null,
     favorites: []
   }
 
@@ -40,9 +40,8 @@ class App extends Component {
 
 
   removeBook = () => {
-    this.setState({ text: '' })
+    this.setState({ book: null, text: '' })
   }
-
 
 
   render() {
@@ -51,7 +50,7 @@ class App extends Component {
         <Router>
           <div>
             <Navbar handleFormSubmit={this.handeleFormSubmit} text={this.state.text} handleBookInput={this.handleBookInput} />
-            <Route exact path='/' component={() => <Home />} />
+            <Route exact path='/' component={() => <Home book={this.state.book} removeBook={this.removeBook} />} />
             <Route exact path='/list' component={() => <List />} />
           </div>
         </Router>
